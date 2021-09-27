@@ -1,0 +1,56 @@
+
+
+/*
+
+Cascading Style Sheets
+
+selector {
+  property: value;
+  other-property: other-value;
+  further-property: multiple separate values;
+}
+
+*/
+
+
+body {
+  background-color: #606aa5;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+  font-size: 533%; /* other units: pt - point, px - pixels */
+}
+
+a {
+  color: #9e2b9e; /* Hexcodes: #000000 - #ffffff */
+}
+
+/* More complicated selectors */
+
+/* Select multiple elements at once */
+h1, h2, h3, h4, h5, h6 {
+  background-color: white;
+  text-align: center;
+  text-shadow: 0px 0px 6px black;
+  padding: 40px;
+}
+
+img {
+  width: 33%;
+}
+
+/* Class selector */
+
+img.feature { /* more specific selectors override less specific selectors */
+  width: 100%;
+}
+
+li.cheeky {
+  color: green;
+}
+
+li.cheeky {
+  color: red; /* this rule takes priority because it comes later */
+}
