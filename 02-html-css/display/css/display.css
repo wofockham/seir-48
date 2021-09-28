@@ -30,3 +30,20 @@ body {
 .hidden-demo {
   visibility: hidden;
 }
+
+/* Halloween */
+
+.spooky span {
+  visibility: hidden;
+}
+
+/* CSS pseudoselector */
+.spooky:hover {
+  background-color: black;
+}
+
+.spooky:hover span {
+  transition: 2s all;
+  visibility: visible;
+  color: yellow;
+}
