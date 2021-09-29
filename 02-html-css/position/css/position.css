@@ -54,6 +54,7 @@ body {
   background-color: green;
   top: 300px;
   right: 200px;
+  z-index: 1;
 }
 
 .blue {
