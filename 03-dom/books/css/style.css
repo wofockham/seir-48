@@ -1,0 +1,7 @@
+body {
+  background-color: limegreen;
+}
+
+.already-read {
+  opacity: 0.5;
+}

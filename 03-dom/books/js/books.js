@@ -1,0 +1,31 @@
+const books = [
+  {
+    title: 'The Design of EveryDay Things',
+    author: 'Don Norman',
+    alreadyRead: false
+  },
+  {
+    title: 'The Most Human Human',
+    author: 'Brian Christian',
+    alreadyRead: true
+  }
+];
+
+// Iterate through the array of books. For each book, create a p element with the book title and author and append it to the page.
+
+const ul = document.createElement('ul'); // detached DOM node
+
+for (let i = 0; i < books.length; i++) {
+  const book = books[i];
+
+  const li = document.createElement('li'); // detached DOM node
+  li.innerHTML = `${ book.title } by ${ book.author }`;
+
+  if (book.alreadyRead) {
+    li.className = 'already-read';
+  }
+
+  ul.appendChild(li);
+}
+
+document.body.appendChild(ul); // Append after, all in one go.
