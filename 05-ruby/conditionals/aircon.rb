@@ -9,7 +9,7 @@ print "What is the current temperature: "
 current_temperature = gets.to_f
 
 print "Is the air conditioner functional (y/n): "
-ac_working = gets.chomp
+ac_working = gets[0].downcase # [0] - just the first character, .downcase to remove any uppercase.
 
 print "What is the desired temperature: "
 desired_temperature = gets.to_f
