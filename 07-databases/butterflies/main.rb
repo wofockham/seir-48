@@ -30,6 +30,25 @@ get '/butterflies/:id' do
   erb :butterflies_show
 end
 
+# EDIT: Displays a form with existing data for the user to edit a butterfly.
+get '/butterflies/:id/edit' do
+  butterflies = query_db "SELECT * FROM butterflies WHERE id=#{ params[:id] }" # returns an array
+  @butterfly = butterflies.first # extract the first butterfly from the array
+  erb :butterflies_edit
+end
+
+# UPDATE: Updates an existing butterfly in the database with new information.
+post '/butterflies/:id' do
+  query_db "UPDATE butterflies SET name='#{ params[:name] }', family='#{ params[:family] }', image='#{ params[:image] }' WHERE id=#{ params[:id] }"
+  redirect to("/butterflies/#{ params[:id] }")
+end
+
+# DELETE: Deletes a butterfly from the database.
+get '/butterflies/:id/delete' do
+  query_db "DELETE FROM butterflies WHERE id=#{ params[:id] }"
+  redirect to("/butterflies")
+end
+
 def query_db(sql_statement)
   puts sql_statement # Optional but very nice for debugging
   db = SQLite3::Database.new 'database.sqlite3'
