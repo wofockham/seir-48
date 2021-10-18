@@ -14,10 +14,18 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 
 # Model: class backed by a database table
 class Butterfly < ActiveRecord::Base
+  belongs_to :plant, :optional => true
 end
 
 class Plant < ActiveRecord::Base
+  has_many :butterflies
 end
+
+# Sneaky route that lets us start pry from the browser (when neededh)
+# get '/pry' do
+#   require 'pry'
+#   binding.pry
+# end
 
 get '/' do
   erb :home
