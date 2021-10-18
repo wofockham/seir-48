@@ -1,0 +1,12 @@
+body {
+  background-color: aliceblue;
+}
+
+nav {
+  background-color: rebeccapurple;
+  padding: 1em;
+}
+
+nav a {
+  color: white;
+}
