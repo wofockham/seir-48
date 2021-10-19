@@ -17,4 +17,7 @@ class PagesController < ApplicationController
 
   def assets
   end
+
+  def urls
+  end
 end
