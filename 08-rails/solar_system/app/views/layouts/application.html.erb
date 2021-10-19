@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to 'All planets', planets_path %>
+      <%= link_to 'New planet', new_planet_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>
