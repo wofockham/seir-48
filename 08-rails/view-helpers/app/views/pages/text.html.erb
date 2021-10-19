@@ -1,0 +1,15 @@
+<h2>Text Helpers</h2>
+
+<ul>
+  <% @numbers.each do |n| %>
+    <li style="background-color: <%= cycle 'red', 'green', 'orange', 'purple' %>;"><%= n %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= truncate @story, :length => 30 %>
+</p>
+
+<p>You have <%= pluralize @friend_count, 'friend' %>.</p>
+
+<p>You have <%= pluralize @enemy_count, 'enemy' %>.</p>
