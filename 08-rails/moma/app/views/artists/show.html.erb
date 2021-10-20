@@ -9,5 +9,6 @@
 </ul>
 
 <div class="controls">
-  <%= button_to 'Delete artist', @artist, :method => 'delete' %>
+  <%= link_to 'Edit artist', edit_artist_path(@artist) %>
+  <%= link_to 'Delete artist', @artist, :method => 'delete', :class => 'hotdogs', :data => { :confirm => 'Are you sure?' } %>
 </div>
