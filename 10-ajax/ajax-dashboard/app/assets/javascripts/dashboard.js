@@ -1,25 +1,31 @@
 $(document).ready(function () {
   const fetchBrother = function () {
-    $.get('/api/brother').done(function (b) {
-      $('#brother').text(b);
-    });
+    $('#brother').load('/api/brother');
   };
 
   setInterval(fetchBrother, 4000);
 
   const fetchTime = function () {
-    $.get('/api/time').done(function (t) {
-      $('#time').text(t);
-    });
+    $('#time').load('/api/time');
   };
 
   setInterval(fetchTime, 1000);
 
   const fetchUptime = function () {
-    $.get('/api/uptime').done(function (u) {
-      $('#uptime').text(u);
-    });
+    $('#uptime').load('/api/uptime');
   };
 
   setInterval(fetchUptime, 11000);
+
+  const fetchCalls = function () {
+    $('#calls').load('/api/calls');
+  };
+
+  setInterval(fetchCalls, 3000);
+
+  const fetchFires = function () {
+    $('#bushfires').load('/api/bushfires');
+  };
+
+  setInterval(fetchFires, 4000);
 });
