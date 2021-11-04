@@ -1,31 +1,20 @@
 $(document).ready(function () {
-  const fetchBrother = function () {
-    $('#brother').load('/api/brother');
+
+  const fetchInfo = function () {
+    $.getJSON('/api/info').done(function (info) {
+      $('#brother').text(info.brother);
+      $('#time').text(info.time);
+      $('#uptime').text(info.uptime);
+      $('#calls').text(info.calls);
+      $('#bushfires').text(info.bushfires);
+    });
   };
 
-  setInterval(fetchBrother, 4000);
+  setInterval(fetchInfo, 3000);
 
-  const fetchTime = function () {
-    $('#time').load('/api/time');
-  };
-
-  setInterval(fetchTime, 1000);
-
-  const fetchUptime = function () {
-    $('#uptime').load('/api/uptime');
-  };
-
-  setInterval(fetchUptime, 11000);
-
-  const fetchCalls = function () {
-    $('#calls').load('/api/calls');
-  };
-
-  setInterval(fetchCalls, 3000);
-
-  const fetchFires = function () {
-    $('#bushfires').load('/api/bushfires');
-  };
-
-  setInterval(fetchFires, 4000);
+  // const fetchBrother = function () {
+  //   $('#brother').load('/api/brother');
+  // };
+  //
+  // setInterval(fetchBrother, 4000);
 });
