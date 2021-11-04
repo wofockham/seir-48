@@ -1,14 +1,12 @@
 const state = {
   page: 1,
-  lastPage: false,
-  requestInProgress: false
+  lastPage: false
 };
 
 const searchFlickr = function (keywords) {
-  if (state.lastPage || state.requestInProgress) return;
+  if (state.lastPage) return;
   console.log('Searching Flickr for', keywords);
   const flickrURL = 'https://api.flickr.com/services/rest?jsoncallback=?'; // JSONP
-  state.requestInProgress = true;
   $.getJSON(flickrURL, {
     method: 'flickr.photos.search', // not to be confused with HTTP methods like POST
     api_key: '2f5ac274ecfac5a455f38745704ad084',
@@ -16,7 +14,6 @@ const searchFlickr = function (keywords) {
     page: state.page++,
     format: 'json'
   }).done(showImages).done(function (info) {
-    state.requestInProgress = false;
     if (info.photos.page >= info.photos.pages) {
       state.lastPage = true;
     }
@@ -59,13 +56,16 @@ $(document).ready(function () {
     searchFlickr( searchTerm );
   });
 
+  // Higher Order Function:
+  const relaxedSearchFlickr = _.debounce(searchFlickr, 4000, true); // Leading edge: don't wait
+
   // Twitchy!
   $(window).on('scroll', function () {
     const scrollBottom = $(document).height() - $(window).scrollTop() - $(window).height();
 
     if (scrollBottom < 700) { // TODO: adjust the conditional to suit your taste
       const searchTerm = $('#query').val();
-      searchFlickr( searchTerm );
+      relaxedSearchFlickr( searchTerm );
     }
   });
 });
