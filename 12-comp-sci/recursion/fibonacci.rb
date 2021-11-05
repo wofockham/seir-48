@@ -1,6 +1,6 @@
 # Fibonacci Sequence: fib(n) = fib(n-1) + fib(n-2)
-# 1 2 3 4 5 6  7  8  9 10
-# 1 1 2 3 5 8 13 21 34 55
+# 1 2 3 4 5 6  7  8  9 10 11
+# 1 1 2 3 5 8 13 21 34 55 89
 
 require 'pry'
 
@@ -19,6 +19,17 @@ end
 
 
 def fibonacci_recursive(n)
+  if n <= 2
+    1
+  else
+    fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+  end
 end
+
+# Bonus homework:
+# Make this faster but still recursive.
+
+# Option a: memoisation
+# Option b: iterative recursion: only recurse once per call
 
 binding.pry
