@@ -30,6 +30,26 @@ end
 # Make this faster but still recursive.
 
 # Option a: memoisation
+
+def fib_memo(n)
+  @fib ||= {} # assigns an empty hash to @fib if it doesn't already have a value
+
+  if @fib[n]
+    @fib[n]
+  elsif n <= 2
+    1
+  else
+    @fib[n] = fib_memo(n-1) + fib_memo(n-2)
+  end
+end
+
 # Option b: iterative recursion: only recurse once per call
+def fib(n, a=1, b=1)
+  if n == 1 || n == 2 # base case
+    b
+  else
+    fib n-1, b, a+b # mystical
+  end
+end
 
 binding.pry
