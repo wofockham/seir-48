@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class SearchForm extends Component {
   constructor() {
     super();
-    this.state = { query: '' };
+    this.state = {
+      query: ''
+    };
 
     this._handleInput = this._handleInput.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
@@ -16,10 +17,7 @@ class SearchForm extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-
-    axios('http://numbersapi.com/random/trivia').then(function (result) {
-      console.log(result);
-    });
+    this.props.onSubmit(this.state.query);
   }
 
   render() {
