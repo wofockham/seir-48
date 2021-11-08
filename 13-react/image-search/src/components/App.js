@@ -1,9 +1,10 @@
-import Echo from './Echo';
+
+import FlickrSearch from './FlickrSearch';
 
 function App() {
   return (
     <div className="App">
-      <Echo />
+      <FlickrSearch />
     </div>
   );
 }
