@@ -4,9 +4,9 @@
     <h3>{{ bio }}</h3>
     <div>
       <button @click="zoomIn"> + </button>
-      <button> - </button>
+      <button @click="zoomOut"> - </button>
     </div>
-    <img v-bind:src="pic" v-bind:height="size" />
+    <img v-if="size > 0" v-bind:src="pic" v-bind:height="size" />
   </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
   methods: {
     zoomIn() {
       this.size += 10;
+    },
+    zoomOut() {
+      this.size -= 10;
     }
   }
 }
