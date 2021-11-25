@@ -8,6 +8,18 @@ const holdUp = (duration) => {
   });
 };
 
+/* Alternative solutions:
+
+// Fewer curlies: implicitly returning the new Promise:
+const holdUp = (duration) => new Promise((resolve) => {
+  setTimeout(resolve, duration);
+});
+
+// No curlies: implicit return all the way down:
+const holdUp = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
+
+*/
+
 holdUp(3000).then(() => {
   console.log('3 seconds has passed');
 }).then(() => {
