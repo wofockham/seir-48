@@ -1,6 +1,8 @@
 // Promises are an evolution of callbacks.
 // a way to handle or process data from an asynchronous process, whenever that process finishes.
 
+// Promises mean you should use .then (and maybe .catch)
+
 const fs = require('fs'); // filesystem: part of the standard library for Node.js
 
 // fs.readFile('flintstones.txt', 'utf-8', (err, content) => { // error first pattern
