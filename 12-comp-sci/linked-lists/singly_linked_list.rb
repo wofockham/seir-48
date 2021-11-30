@@ -1,5 +1,7 @@
 class SinglyLinkedList
 
+  include Enumerable # mixin: simulating inheriting from multiple classes
+
   class Node
     attr_accessor :value, :next
 
@@ -35,6 +37,11 @@ class SinglyLinkedList
 
   # TODO:
   def remove # AKA shift() -- remove the first node
+    if @head
+      node = @head
+      @head = @head.next
+      node.value # implicitly return the value of the old head
+    end
   end
 
   def insert_after(node, new_value)
@@ -46,17 +53,30 @@ class SinglyLinkedList
 
   # Tricky
   def reverse # non-destructive
+    reversed_list = SinglyLinkedList.new
+    current_node = @head
+    while current_node
+      reversed_list.prepend(current_node.value)
+      current_node = current_node.next # walking/stepping through the graph
+    end
+    reversed_list
   end
 
   # Trickier
   def reverse! # destructive
+    @head = self.reverse.head
   end
 
   # Trickiest -- how do you accept/invoke a do/end block?
-  def each
+  def xxx_each
+    current_node = @head
+    while current_node
+      yield(current_node.value) if block_given?
+      current_node = current_node.next
+    end
   end
 
-  # Bonus: .map, .reduce(), .select(), .reject, .inject, .length AKA .size AKA .count
+  # Bonus: .map(), .reduce(), .select(), .reject, .inject, .length AKA .size AKA .count
   # Bonus bonus: .at_index(3) # equivalent bros[3]
 end
 
@@ -64,5 +84,12 @@ end
 require 'pry'
 
 bros = SinglyLinkedList.new 'Groucho'
+bros.append 'Harpo'
+bros.append 'Chico'
+bros.append 'Gummo'
+
+# bros.each do |b|
+#   puts "The name is #{ b.upcase } Marx"
+# end
 
 binding.pry
