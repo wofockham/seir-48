@@ -23,7 +23,11 @@
               Edit
             </router-link>
           </td>
-          <td width="75" class="center aligned">Delete</td>
+          <td width="75" class="center aligned" @click.prevent="onDestroy(word._id)">
+            <a :href="`/words/${word._id}`">
+              Delete
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -39,6 +43,17 @@ export default {
     return {
       words: []
     };
+  },
+  methods: {
+    async onDestroy(id) {
+      const sure = confirm('Are you sure?');
+      if (!sure) return;
+
+      await api.deleteWord(id);
+      alert('Word deleted succesfully!');
+      const updatedWords = this.words.filter((word) => word._id != id);
+      this.words = updatedWords;
+    }
   },
   async mounted() {
     this.words = await api.getWords();
