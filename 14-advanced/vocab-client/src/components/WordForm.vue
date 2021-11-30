@@ -24,7 +24,13 @@ export default {
   props: {
     word: {
       type: Object,
-      required: false
+      required: false,
+      default() {
+        return {
+          english: '',
+          german: ''
+        }
+      }
     }
   },
   data() {
@@ -37,7 +43,7 @@ export default {
       if (this.word.english === '' || this.word.german === '') {
         this.errorsPresent = true;
       } else {
-        console.log('TODO: save the updates to the server');
+        this.$emit('createOrUpdate', this.word);
       }
     }
   }
