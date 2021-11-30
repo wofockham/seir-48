@@ -50,7 +50,7 @@ export default {
       if (!sure) return;
 
       await api.deleteWord(id);
-      alert('Word deleted succesfully!');
+      this.flash('Word deleted succesfully!', 'success');
       const updatedWords = this.words.filter((word) => word._id != id);
       this.words = updatedWords;
     }
