@@ -4,7 +4,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        Profile coming soon
+        { this.props.match.params.username } details coming soon
       </div>
     )
   }
