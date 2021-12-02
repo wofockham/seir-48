@@ -24,7 +24,7 @@ class Profile extends Component {
     return (
       <div>
         <h2>Profile for { this.props.match.params.username }</h2>
-        <div>
+        <div style={ {display: 'flex'} }>
           <UserInfo info={ this.state.info } />
           <Repositories repos={ this.state.repos } />
         </div>
@@ -34,17 +34,45 @@ class Profile extends Component {
 }
 
 const UserInfo = (props) => {
+  if (props.info === null) {
+    return (<div>Loading...</div>);
+  }
+
+  const { login, avatar_url, bio, followers, following, public_repos, public_gists } = props.info;
   return (
     <div>
-      UserInfo coming soon
+      <h3>Stats for { login }</h3>
+      <img src={ avatar_url } alt={ login } width="200" />
+      <p>Bio: { bio }</p>
+      <p>Followers: { followers }</p>
+      <p>Following: { following }</p>
+      <p>Public repos: { public_repos }</p>
+      <p>Public gists: { public_gists }</p>
     </div>
   )
 };
 
 const Repositories = (props) => {
+  if (props.repos === null) {
+    return (<div>Loading...</div>);
+  }
+
+  const userRepos = props.repos.map((r) => {
+    return (
+      <li key={ r.id }>
+        <a href={ r.html_url } target="_blank">
+          { r.name }
+        </a>
+      </li>
+    );
+  });
+
   return (
     <div>
-      Repositories coming soon
+      <h3>Repos</h3>
+      <ul>
+        { userRepos }
+      </ul>
     </div>
   )
 };
